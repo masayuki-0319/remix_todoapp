@@ -1,0 +1,9 @@
+version: '3.4'
+services:
+  db:
+    image: mysql:8.0.33
+    environment:
+      MYSQL_DATABASE: sample_development
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    ports:
+      - '33060:3306'
