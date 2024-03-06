@@ -1,7 +1,7 @@
 import { LoaderFunctionArgs, json } from '@remix-run/node';
 import { Form, Link, useLoaderData } from '@remix-run/react';
-import { call } from './show.server';
 import { Post } from '@prisma/client';
+import { postRepository } from '~/models/post.server';
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   if (!params.postId)
@@ -10,7 +10,7 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
       statusText: 'Not Found',
     });
 
-  const post = await call({ id: params.postId });
+  const post = await postRepository.findById(params.postId);
   return json(post);
 };
 
