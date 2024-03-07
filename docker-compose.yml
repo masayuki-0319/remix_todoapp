@@ -1,9 +1,15 @@
-version: '3.4'
+version: '3.8'
 services:
   db:
-    image: mysql:8.0.33
+    image: postgres:15-alpine
+    restart: always
     environment:
-      MYSQL_DATABASE: sample_development
-      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=sample_development
     ports:
-      - '33060:3306'
+      - '5432:5432'
+    volumes:
+      - db_data:/var/lib/postgresql/data
+volumes:
+  db_data:
+    driver: local
