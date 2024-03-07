@@ -17,8 +17,6 @@
     "paths": {
       "~/*": ["./app/*"]
     },
-    "types": ["vitest/globals", "vitest-environment-vprisma"], // for vitest-environment-vprisma
-
     // Vite takes care of building everything, not tsc.
     "noEmit": true
   }
