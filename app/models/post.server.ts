@@ -1,49 +1,43 @@
 import { Post } from '.prisma/client';
 import { prisma } from '~/db.server';
+import { PrismaRepository } from './type.d';
 
-const findById = async (id: string): Promise<Post | null> => {
-  return await prisma.post.findUnique({ where: { id: id } });
-};
+export class PostRepository implements PrismaRepository<Post> {
+  readonly database = prisma;
 
-const findAll = async (): Promise<Post[]> => {
-  return await prisma.post.findMany();
-};
+  async create(post: Pick<Post, 'title' | 'content'>) {
+    const { title, content } = post;
+    if (!title || !content) throw new Error('Title and content are required');
 
-const updateById = async (
-  params: Pick<Post, 'id'> & Partial<Pick<Post, 'title' | 'content'>>
-): Promise<Post> => {
-  const { id, title, content } = params;
+    return await this.database.post.create({
+      data: {
+        title: title,
+        content: content,
+      },
+    });
+  }
 
-  return await prisma.post.update({
-    where: { id: id },
-    data: { title, content },
-  });
-};
+  async find(id: Post['id']) {
+    return await this.database.post.findUnique({ where: { id } });
+  }
 
-const deleteById = async (params: Pick<Post, 'id'>): Promise<Post> => {
-  return await prisma.post.delete({
-    where: { id: params.id },
-  });
-};
+  async findAll(): Promise<Post[]> {
+    return await this.database.post.findMany();
+  }
 
-const create = async ({
-  title,
-  content,
-}: { title: string | null } & { content: string | null }) => {
-  if (!title || !content) throw new Error('Title and content are required');
+  async update(post: Partial<Post>) {
+    const { id, title, content } = post;
 
-  return await prisma.post.create({
-    data: {
-      title: title,
-      content: content,
-    },
-  });
-};
+    return await this.database.post.update({
+      where: { id: id },
+      data: { title, content },
+    });
+  }
 
-export const postRepository = {
-  create,
-  findById,
-  findAll,
-  updateById,
-  deleteById,
-};
+  async delete(id: Post['id']) {
+    await this.database.post.delete({
+      where: { id },
+    });
+    return;
+  }
+}

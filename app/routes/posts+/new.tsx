@@ -1,6 +1,6 @@
 import type { ActionFunctionArgs } from '@remix-run/node';
 import { redirect } from '@remix-run/node';
-import { postRepository } from '~/models/post.server';
+import { PostRepository } from '~/models/post.server';
 
 export const action = async ({ request }: ActionFunctionArgs) => {
   const form = await request.formData();
@@ -11,7 +11,9 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     throw new Error('Title and content are required');
   }
 
+  const postRepository = new PostRepository();
   const post = await postRepository.create({ title: title, content: content });
+
   return redirect(`/posts/${post.id}`);
 };
 
