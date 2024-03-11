@@ -1,12 +1,8 @@
-import { beforeEach, describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { PostRepository } from './post.server';
 
 describe('PostRepository', () => {
-  let postRepository: PostRepository;
-
-  beforeEach(() => {
-    postRepository = new PostRepository();
-  });
+  const postRepository: PostRepository = new PostRepository();
 
   describe('create', () => {
     it('should create a new post', async () => {
