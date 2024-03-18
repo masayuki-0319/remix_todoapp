@@ -18,52 +18,59 @@ describe('PostRepository', () => {
     });
   });
 
-  describe.skip('find', () => {
+  describe('find', () => {
     it('should find a post by id', async () => {
-      const postId = 'a';
-
-      const foundPost = await postRepository.find(postId);
+      const post = await postTestFactory.create();
+      const foundPost = await postRepository.find(post.id);
 
       expect(foundPost).toBeDefined();
-      expect(foundPost?.id).toBe(postId);
+      expect(foundPost?.id).toBe(post.id);
     });
   });
 
-  describe.skip('findAll', () => {
+  describe('findAll', () => {
     it('should find all posts', async () => {
-      const allPosts = await postRepository.findAll();
+      await postTestFactory.createList(2);
 
-      expect(allPosts).toBeDefined();
-      expect(Array.isArray(allPosts)).toBe(true);
+      const posts = await postRepository.findAll();
+
+      expect(posts).toBeDefined();
+      expect(posts).toHaveLength(2);
     });
   });
 
-  describe.skip('update', () => {
+  describe('update', () => {
     it('should update a post', async () => {
-      const post = {
-        id: 'a',
-        title: 'Updated Post',
-        content: 'This post has been updated',
+      const post = await postTestFactory.create({
+        title: 'before title',
+        content: 'before content',
         published: false,
+      });
+
+      const updateParams = {
+        id: post.id,
+        title: 'after title',
+        content: 'after content',
+        published: true,
       };
 
-      const updatedPost = await postRepository.update(post);
+      const updatedPost = await postRepository.update(updateParams);
 
       expect(updatedPost).toBeDefined();
       expect(updatedPost.id).toBe(post.id);
-      expect(updatedPost.title).toBe(post.title);
-      expect(updatedPost.content).toBe(post.content);
+      expect(updatedPost.title).toBe(updateParams.title);
+      expect(updatedPost.content).toBe(updateParams.content);
     });
   });
 
-  describe.skip('delete', () => {
+  describe('delete', () => {
     it('should delete a post', async () => {
-      const postId = 'a';
+      const post = await postTestFactory.create();
 
-      await postRepository.delete(postId);
+      await postRepository.delete(post.id);
 
-      // Verify that the post has been deleted
-      const deletedPost = await postRepository.find(postId);
+      const deletedPost = await postRepository.find(post.id);
+
       expect(deletedPost).toBeNull();
     });
   });

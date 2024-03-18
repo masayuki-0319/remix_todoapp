@@ -41,3 +41,7 @@ export class PostRepository implements PrismaRepository<Post> {
     return;
   }
 }
+
+const postRepository = new PostRepository();
+
+export { postRepository };
