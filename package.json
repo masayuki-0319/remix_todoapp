@@ -8,8 +8,9 @@
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "start": "remix-serve ./build/server/index.js",
     "typecheck": "tsc",
-    "test": "vitest",
-    "db:migrate": "npx prisma migrate dev --name init"
+    "test": "export $(cat .env.test | xargs) && vitest",
+    "db:migrate": "npx prisma migrate dev --name init",
+    "test:db:migrate": "export $(cat .env.test | xargs) && npx prisma migrate dev --name init"
   },
   "dependencies": {
     "@prisma/client": "^5.10.2",
