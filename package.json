@@ -9,6 +9,7 @@
     "start": "remix-serve ./build/server/index.js",
     "typecheck": "tsc",
     "test": "dotenv -e .env.test -- vitest",
+    "db:init": "yarn db:migrate && yarn db:seed",
     "db:migrate": "yarn dev:db:migrate && yarn test:db:migrate",
     "dev:db:migrate": "prisma migrate dev",
     "test:db:migrate": "dotenv -e .env.test -- prisma migrate dev",
