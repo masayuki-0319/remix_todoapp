@@ -5,19 +5,19 @@
   "type": "module",
   "scripts": {
     "build": "remix vite:build",
-    "dev": "remix vite:dev",
-    "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
-    "format:check": "prettier --check ./{app,tests}/**/*.{ts,tsx}",
-    "format:write": "npx prettier --write ./{app,tests}/**/*.{ts,tsx}",
     "start": "remix-serve ./build/server/index.js",
-    "typecheck": "tsc",
-    "test": "dotenv -e .env.test -- vitest",
+    "dev": "remix vite:dev",
     "db:init": "yarn db:migrate && yarn db:seed",
     "db:migrate": "yarn dev:db:migrate && yarn test:db:migrate",
     "db:migrate:reset": "prisma migrate reset --force",
     "db:seed": "prisma db seed",
     "dev:db:migrate": "prisma migrate dev",
-    "test:db:migrate": "dotenv -e .env.test -- prisma migrate dev"
+    "test:db:migrate": "dotenv -e .env.test -- prisma migrate dev",
+    "tsc": "tsc",
+    "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
+    "test": "dotenv -e .env.test -- vitest",
+    "format:check": "prettier --check ./{app,tests}/**/*.{ts,tsx}",
+    "format:write": "npx prettier --write ./{app,tests}/**/*.{ts,tsx}"
   },
   "prisma": {
     "seed": "tsx prisma/seed/index.ts"
