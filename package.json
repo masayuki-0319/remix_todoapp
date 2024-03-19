@@ -1,5 +1,6 @@
 {
   "name": "sample_fullstack_remix",
+  "license": "MIT",
   "sideEffects": false,
   "type": "module",
   "scripts": {
