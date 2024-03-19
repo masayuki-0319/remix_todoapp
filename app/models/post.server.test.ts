@@ -1,5 +1,5 @@
-import { describe, expect, it } from 'vitest';
 import { PostRepository } from './post.server';
+import { postTestFactory } from '~/test/factories/post';
 
 describe('PostRepository', () => {
   const postRepository: PostRepository = new PostRepository();
