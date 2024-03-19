@@ -1,5 +1,5 @@
 {
-  "name": "sample_fullstack_remix",
+  "name": "remix_todoapp",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
