@@ -13,5 +13,5 @@ export const postTestFactory = Factory.define<Post>(
       content: `test-${sequence}`,
       published: true,
     };
-  }
+  },
 );

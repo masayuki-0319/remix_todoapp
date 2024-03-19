@@ -52,22 +52,22 @@ export default function PostEdit() {
   return (
     <div>
       <h1>Edit Post</h1>
-      <form method='post'>
+      <form method="post">
         <input
           style={{ display: 'block' }}
-          name='title'
+          name="title"
           placeholder={post.title}
           defaultValue={post.title}
-          type='text'
+          type="text"
         />
         <input
           style={{ display: 'block' }}
-          name='content'
+          name="content"
           placeholder={post.content || ''}
           defaultValue={post.content || ''}
-          type='text'
+          type="text"
         />
-        <button style={{ display: 'block' }} type='submit'>
+        <button style={{ display: 'block' }} type="submit">
           Post
         </button>
       </form>

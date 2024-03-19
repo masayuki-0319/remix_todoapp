@@ -11,6 +11,6 @@ interface Repository<T> {
   delete(entity: Entity['id']): Promise<void>;
 }
 
-export interface PrismaRepository extends Repository<Entity> {
+export interface PrismaRepository<T extends Entity> extends Repository<T> {
   readonly database: PrismaClient;
 }

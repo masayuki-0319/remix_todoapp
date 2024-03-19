@@ -14,7 +14,7 @@ export default function Index() {
     <div style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.8' }}>
       <h1>TODO App!</h1>
       <ul>
-        <Link to='posts'>Posts</Link>
+        <Link to="posts">Posts</Link>
       </ul>
     </div>
   );

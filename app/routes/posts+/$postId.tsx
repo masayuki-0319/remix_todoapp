@@ -21,12 +21,12 @@ export default function PostShow() {
   const post: Post = useLoaderData();
   return (
     <div>
-      <Link to='/posts'>Go back to index</Link>
+      <Link to="/posts">Go back to index</Link>
       <h1>Post</h1>
       <h2>{post.title}</h2>
       <p>{post.content}</p>
-      <Link to='edit'>Edit</Link>
-      <Form action='delete' method='post'>
+      <Link to="edit">Edit</Link>
+      <Form action="delete" method="post">
         <button>Delete</button>
       </Form>
     </div>

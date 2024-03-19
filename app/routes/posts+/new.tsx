@@ -23,20 +23,20 @@ export default function PostNew() {
   return (
     <div>
       <h1>New Post</h1>
-      <form method='post'>
+      <form method="post">
         <input
           style={{ display: 'block' }}
-          name='title'
-          placeholder='title'
-          type='text'
+          name="title"
+          placeholder="title"
+          type="text"
         />
         <input
           style={{ display: 'block' }}
-          name='content'
-          placeholder='content'
-          type='text'
+          name="content"
+          placeholder="content"
+          type="text"
         />
-        <button style={{ display: 'block' }} type='submit'>
+        <button style={{ display: 'block' }} type="submit">
           Post
         </button>
       </form>
