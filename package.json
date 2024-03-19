@@ -12,10 +12,10 @@
     "test": "dotenv -e .env.test -- vitest",
     "db:init": "yarn db:migrate && yarn db:seed",
     "db:migrate": "yarn dev:db:migrate && yarn test:db:migrate",
-    "dev:db:migrate": "prisma migrate dev",
-    "test:db:migrate": "dotenv -e .env.test -- prisma migrate dev",
     "db:migrate:reset": "prisma migrate reset --force",
-    "db:seed": "prisma db seed"
+    "db:seed": "prisma db seed",
+    "dev:db:migrate": "prisma migrate dev",
+    "test:db:migrate": "dotenv -e .env.test -- prisma migrate dev"
   },
   "prisma": {
     "seed": "tsx prisma/seed/index.ts"
