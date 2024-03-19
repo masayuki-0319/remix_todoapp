@@ -1,4 +1,5 @@
 import { vi } from 'vitest';
+
 import { prisma } from '~/db.server';
 prisma;
 

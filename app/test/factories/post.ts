@@ -1,5 +1,6 @@
-import { Factory } from 'fishery';
 import { Post } from '@prisma/client';
+import { Factory } from 'fishery';
+
 import { postRepository } from '~/models/post.server';
 
 export const postTestFactory = Factory.define<Post>(

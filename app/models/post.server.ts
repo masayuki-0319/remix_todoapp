@@ -1,5 +1,7 @@
 import { Post } from '.prisma/client';
+
 import { prisma } from '~/db.server';
+
 import { PrismaRepository } from './type.d';
 
 export class PostRepository implements PrismaRepository<Post> {

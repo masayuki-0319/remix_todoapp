@@ -1,4 +1,5 @@
 import { redirect, type ActionFunctionArgs } from '@remix-run/node';
+
 import { PostRepository } from '~/models/post.server';
 
 export const action = async ({ params }: ActionFunctionArgs) => {

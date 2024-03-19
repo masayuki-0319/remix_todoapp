@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+
 import { postRepository } from '~/models/post.server';
 
 const prisma = new PrismaClient();

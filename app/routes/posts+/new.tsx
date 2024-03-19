@@ -1,6 +1,8 @@
-import type { ActionFunctionArgs } from '@remix-run/node';
 import { redirect } from '@remix-run/node';
+
 import { PostRepository } from '~/models/post.server';
+
+import type { ActionFunctionArgs } from '@remix-run/node';
 
 export const action = async ({ request }: ActionFunctionArgs) => {
   const form = await request.formData();

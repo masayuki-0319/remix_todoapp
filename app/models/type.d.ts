@@ -2,15 +2,15 @@ interface Entity {
   id: string | number;
 }
 
-interface Repository<Entity> {
+interface Repository<T> {
   readonly database: unknown;
-  create(entity: Partial<Entity>): Promise<Entity>;
-  find(entityId: Entity['id']): Promise<Entity | null>;
-  findAll(): Promise<Entity[] | null>;
-  update(entity: Partial<Entity>): Promise<Entity>;
+  create(entity: Partial<T>): Promise<T>;
+  find(entityId: T['id']): Promise<T | null>;
+  findAll(): Promise<T[] | null>;
+  update(entity: Partial<T>): Promise<T>;
   delete(entity: Entity['id']): Promise<void>;
 }
 
-export interface PrismaRepository<Entity> extends Repository<Entity> {
+export interface PrismaRepository extends Repository<Entity> {
   readonly database: PrismaClient;
 }

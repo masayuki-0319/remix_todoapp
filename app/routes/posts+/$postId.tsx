@@ -1,6 +1,7 @@
+import { Post } from '@prisma/client';
 import { LoaderFunctionArgs, json } from '@remix-run/node';
 import { Form, Link, useLoaderData } from '@remix-run/react';
-import { Post } from '@prisma/client';
+
 import { PostRepository } from '~/models/post.server';
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {

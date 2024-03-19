@@ -1,5 +1,6 @@
-import { PostRepository } from './post.server';
 import { postTestFactory } from '~/test/factories/post';
+
+import { PostRepository } from './post.server';
 
 describe('PostRepository', () => {
   const postRepository: PostRepository = new PostRepository();

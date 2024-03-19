@@ -1,8 +1,10 @@
-import type { ActionFunctionArgs, LoaderFunctionArgs } from '@remix-run/node';
+import { Post } from '@prisma/client';
 import { json, redirect } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
-import { Post } from '@prisma/client';
+
 import { PostRepository } from '~/models/post.server';
+
+import type { ActionFunctionArgs, LoaderFunctionArgs } from '@remix-run/node';
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   if (!params.postId)
