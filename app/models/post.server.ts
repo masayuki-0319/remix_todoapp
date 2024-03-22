@@ -4,7 +4,7 @@ import { prisma } from '~/db.server';
 
 import { PrismaRepository } from './type.d';
 
-export class PostRepository implements PrismaRepository<Post> {
+class PostRepository implements PrismaRepository<Post> {
   readonly database = prisma;
 
   async create(post: Pick<Post, 'title' | 'content'>) {

@@ -2,7 +2,7 @@ import { Post } from '@prisma/client';
 import { json, redirect } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 
-import { PostRepository } from '~/models/post.server';
+import { postRepository } from '~/models/post.server';
 
 import type { ActionFunctionArgs, LoaderFunctionArgs } from '@remix-run/node';
 
@@ -13,7 +13,6 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
       statusText: 'Not Found',
     });
 
-  const postRepository = new PostRepository();
   const post = await postRepository.find(params.postId);
   if (!post)
     throw new Response(null, {
@@ -37,7 +36,6 @@ export const action = async ({ request, params }: ActionFunctionArgs) => {
       statusText: 'Not Found',
     });
 
-  const postRepository = new PostRepository();
   const post = await postRepository.update({
     id: params.postId,
     title: title,
